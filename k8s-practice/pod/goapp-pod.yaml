@@ -1,11 +1,17 @@
+# 쿠버네티스에서 pod는 컨테이너를 관리한다.
+# kubectl get po -w
+# kubectl get po -o wide
+# kubectl port-forward goapp-pod 8082:8080
 apiVersion: v1
 kind: Pod
 metadata:
-  name: goapp-pod
+  name: goapp-pod # pod의 이름
+  
+# spec : pod 리소스의 스펙
 spec:
-  containers:
+  containers: # 하나 이상의 컨테이너를 설정할 수 있음
   - image: dangtong/goapp
-    name: goapp-container
+    name: goapp-container # container 이름
     ports:
-    - containerPort: 8080
+    - containerPort: 8080 # kind network에서 pod network로 포트포워딩(k8s의 네트워크 : host/node 네트워크, pod 네트워크, service 네트워크)
       protocol: TCP
