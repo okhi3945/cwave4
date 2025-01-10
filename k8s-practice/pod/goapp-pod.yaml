@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: goapp-pod
+spec:
+  containers:
+  - image: dangtong/goapp
+    name: goapp-container
+    ports:
+    - containerPort: 8080
+      protocol: TCP
