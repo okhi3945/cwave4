@@ -1,0 +1,25 @@
+# 라벨과 어노테이션은 모두 주석
+# 객체를 삭제하거나, 조회하는 등의 운영을 할 때 라벨 또는 어노테이션을 사용하여 대상을 가리킴
+# 라벨은 다차원이며, 여러개 줄 수 있음
+
+# 라벨 명령어
+# 라벨 추가 : kubectl label pod goapp-pod2 app="application" tier="frontEnd”
+# 전체 라벨 확인 : kubectl get po --show-labels
+# 특정 라벨만 확인 : kubectl get po -L env,app
+# 라벨 삭제 : kubectl label pod <pod-name> <label-name>- 뒤에 - 붙여주면 삭제
+# describe로 라벨 확인 가능 : kubectl describe po goapp-pod2
+# 라벨을 사용하여 조건에 맞는 pod의 정보 출력 : kubectl get po -l 'app in (application), tier in (frontEnd)’ → and 조건
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: goapp-pod-memhigh
+  labels: # 라벨 작성
+    tier: frontEnd
+    app: apache
+spec:
+  nodeSelector:
+    memsize: "high"
+  containers:
+  - image: dangtong/goapp
+    name: goapp-container-memhigh
