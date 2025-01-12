@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-http-pod
+  labels:
+    test: liveness
+spec:
+  containers:
+  - name: liveness-container
+    image: k8s.gcr.io/liveness
+    args:
+      - /server
+    startupProbe:
+      initialDelaySeconds: 3
+      periodSeconds: 3
+      failureThreshold: 3
+      httpGet:
+        path: /healthz
+        port: 8080
+        httpHeaders:
+        - name: Custom-Header
+          value: Awesome
+    readinessProbe:
+      initialDelaySeconds: 1
+      periodSeconds: 1
+      httpGet:
+        path: /healthz
+        port: 8080
+        httpHeaders:
+        - name: Custom-Header
+          value: Awesome
+    livenessProbe:
+      initialDelaySeconds: 3
+      periodSeconds: 3
+      httpGet:
+        path: /healthz
+        port: 8080
+        httpHeaders:
+        - name: Custom-Header
+          value: Awesome
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 8080
