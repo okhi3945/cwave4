@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: goapp-on-ssd
+spec:
+  selector:
+    matchLabels:
+      app: goapp-pod
+  template:
+    metadata:
+      labels:
+        app: goapp-pod
+    spec:
+      nodeSelector: # node가 여러개 있을 때, tag가 지정한 값인 노드에만 ds가 뜸, 라벨은 모든 객체에 사용 가능, 노드도 객체임 
+        disk: ssd
+      containers:
+      - name: goapp-container
+        image: dangtong/goapp
