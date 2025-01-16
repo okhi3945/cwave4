@@ -8,7 +8,7 @@ Replication Controller는 지정된 수의 Pod 복제본이 항상 실행되도�
 - Selector와 Replicas를 통해 Pod가 지정된 개수로 잘 떠있는지 감시
 - **Label**에 해당하는 Pod가 Replicas 개수만큼 잘 떠있는지 감시하고, 종료되면 살리고, Pod의 라벨이 변경되면, 새로운 Pod를 띄운다. 
 
-### 라벨 관련 명령어어
+### 라벨 관련 명령어
 - 라벨 추가 : kubectl label pod goapp-pod2 app="application" tier="frontEnd”
 - 전체 라벨 확인 : kubectl get po --show-labels
 - 라벨 삭제 : kubectl label pod <pod-name> <label-name>- 뒤에 - 붙여주면 삭제
