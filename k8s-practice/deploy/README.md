@@ -34,7 +34,6 @@ Deployment
 - 서비스를 변경하고, 변경한 서비스로 업데이트하여 버전을 바꾸는 과정
 - 배포하는 과정에서 **로드 밸런서**가 사용자의 요청을 어떤 버전의 서비스로 보낼지 결정하는 중요한 역할을 수행함
 
-![deploy](https://github.com/user-attachments/assets/19eaf420-38a3-43b2-aa33-ba6f8aef1d50)
 ## 배포 전략 개요
 
 다음은 사용 빈도순으로 정리한 주요 배포 전략들입니다:
@@ -45,6 +44,8 @@ Deployment
 4. Canary (카나리)
 5. A/B Testing (A/B 테스팅)
 6. Shadow (섀도우)
+
+![deploy](https://github.com/user-attachments/assets/19eaf420-38a3-43b2-aa33-ba6f8aef1d50)
 
 ## 전략별 상세 설명
 
