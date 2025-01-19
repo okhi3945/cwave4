@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  ubuntu:
+    image: cloudwave:example.1
+    build:
+      dockerfile: "server.dockerfile"
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - "sleep 3600"
+    restart: no
+  nginx:
+    image: nginx:latest
+    ports:
+      - "82:82"
+    restart: always

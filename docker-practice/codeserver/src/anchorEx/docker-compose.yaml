@@ -1,0 +1,27 @@
+version: '3.8'
+x-common:
+  &common
+  restart: always
+  volumes:
+    - source:/code
+  environment:
+    &default-env
+    BY: "x-common"
+
+x-value: &v1 x
+
+services:
+  ubuntu:
+    <<: *common
+    image: ubuntu:22.04
+    environment:
+      <<: *default-env
+      FROM: "env definition"
+      X: *v1
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - echo 'env from ${FROM}' && echo env from $${BY}
+    restart: no
+volumes:
+  source:

@@ -1,0 +1,16 @@
+services:
+  ubuntu:
+    image: cloudwave:ubuntu.dig.v1
+    container_name: "servercontainer"
+    build:
+      dockerfile: Dockerfile
+    command:
+      - sleep
+      - infinity
+      
+  web-app:
+    image: nginx:latest
+    expose: 
+      - 80	
+    deploy:
+      replicas: 3 

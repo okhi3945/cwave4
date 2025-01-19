@@ -1,0 +1,5 @@
+PASSWORD=password
+DEFAULT_WORKSPACE=/code
+PUID=0
+PGID=0
+TZ="Asia/Seoul"

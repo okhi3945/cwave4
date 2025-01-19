@@ -1,0 +1,50 @@
+# docker-compose.yaml
+# [연습] host 네트워크를 사용하는 컨테이너 만들기
+# version: '3.8'
+# name: 'network-host'
+# services:
+#   ubuntu:
+#     image: ubuntu:22.04
+#     entrypoint: /bin/bash
+#     command:
+#       - -c
+#       - sleep infinity
+
+#
+# docker-compose.yaml
+# version: '3.8'
+# name: 'network-external'
+
+# services:
+#   ubuntu:
+#     image: ubuntu:22.04
+#     entrypoint: /bin/bash
+#     command:
+#       - -c
+#       - sleep infinity
+#     networks:
+#       private:
+# networks:
+#   private:
+#     name: "my-private"
+#     external: true
+
+# [연습] alias 설정하기
+# docker-compose.yaml
+version: '3.8'
+name: 'network-alias'
+
+services:
+  ubuntu:
+		image: ubuntu:22.04
+		entrypoint: /bin/bash
+		command:
+			- -c
+			- sleep infinity
+		networks:
+			private:
+				aliases: # alias 추가
+					- server
+
+networks:
+	private:

@@ -1,0 +1,38 @@
+# docker-compose.yaml
+# [연습] ubuntu 서버 실행하기
+# 1. 
+# version: "3.8"
+
+# services:
+#   ubuntu:
+#     image: ubuntu:22.04
+#     restart: no
+# 2. tty : true
+# version: '3.8'
+# services:
+#   ubuntu:
+#     image: ubuntu:22.04
+#     tty: true
+#     stdin_open: true
+#     restart: no
+# 3. 
+# version: '3.8'
+# services:
+#   ubuntu:
+#     image: ubuntu:22.04
+#     entrypoint: /bin/bash
+#     command:
+#       - -c
+#       - sleep infinity
+#     restart: no
+# [연습] 환경변수를 이용하여 compose file 제어하기
+# project-1.yaml
+version: '3.8'
+services:
+  ubuntu:
+    image: ubuntu:22.04
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - echo 'env from "$FROM"'
+    restart: no

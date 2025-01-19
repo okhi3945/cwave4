@@ -1,0 +1,71 @@
+# # docker-compose.yaml
+# version: '3.8'
+# name: 'cloudwave'
+
+# services:
+#   success:
+#     image: ubuntu:22.04
+#     entrypoint: /bin/bash
+#     command:
+#       - -c
+#       - sleep infinity
+#     networks:
+#       private: {}
+
+#   fail:
+#     image: ubuntu:22.04
+#     entrypoint: /bin/bash
+#     command:
+#       - -c
+#       - sleep fail
+#     networks:
+#       private: {}
+
+# networks:
+#   private:
+
+# # docker-compose.yaml
+
+# version: '3.8'
+# name: 'cloud_wave'
+# services:
+#   success:
+#     image: ubuntu:22.04
+#     entrypoint: /bin/bash
+#     command:
+#       - -c
+#       - sleep infinity
+#     networks:
+#       private: {}
+#     volumes:
+#       - anonymous:/anonymous
+#       - named:/named
+#       - external:/external
+# networks:
+#   private:
+
+# volumes:
+#   anonymous:
+#   named:
+#     name: "named_volume"
+#   external:
+#     name: "external"
+#     external: true
+
+# # docker-compose.yaml
+# version: "3.8"
+
+# services:
+#   server:
+#     image: compose:build.v1
+#     build:
+#       dockerfile_inline: |
+#         FROM ubuntu:22.04
+#         RUN apt-get update && apt-get upgrade
+#         # Or Use `dockerfile`
+#         # dockerfile: "server.dockerfile"
+#     entrypoint: /bin/bash
+#     command:
+#       - -c
+#       - "sleep 3600"
+#     restart: no

@@ -1,0 +1,23 @@
+# docker-compose.yaml
+version: '3.8'
+services:
+  postgres:
+    image: postgres:16.1-bullseye
+    environment:
+      - POSTGRES_PASSWORD=mysecretpassword
+  server:
+    image: ubuntu:22.04
+    stdin_open: true # docker run -i
+    tty: true # docker run -t
+    depends_on:
+      - postgres
+  pgadmin:
+    image: dpage/pgadmin4:7.4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=user@sample.com
+      - PGADMIN_DEFAULT_PASSWORD=SuperSecret
+    depends_on:
+      - postgres
+      - server
+    profiles:
+      - debug

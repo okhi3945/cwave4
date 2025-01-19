@@ -1,0 +1,17 @@
+name: 'network-across-project-1'
+
+services:
+  network-across-project-1:
+    image: ubuntu:22.04
+    tty: true
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - "apt-get update && apt-get -y install curl && sleep infinity"
+    networks:
+      across_project:
+        aliases:
+          - main
+networks:
+  across_project:
+    external: true

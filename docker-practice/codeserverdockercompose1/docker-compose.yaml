@@ -1,0 +1,37 @@
+services:
+  gitsync:
+      image: registry.k8s.io/git-sync/git-sync:v4.1.0
+      volumes:
+        - remote_code:/tmp
+      env_file: .env
+      profiles: 
+        - init
+
+  ide:
+    image: yhoka/cloudwave:practice.v1
+    env_file: .env
+    ports:
+      - 8445:8443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - local_code:/code/local
+      - remote_code:/code/remote
+    secrets:
+      - code-server-password
+    working_dir: /code
+    environment:
+      FILE__PASSWORD: /run/secrets/code-server-password
+    depends_on:
+      gitsync:
+        # condition : service_completed_successfully
+        condition: service_started
+
+volumes:
+  local_code:
+    name: "local_code"
+  remote_code:
+    external: true
+
+secrets:
+  code-server-password:
+    file: "password.txt"

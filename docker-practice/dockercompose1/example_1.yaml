@@ -1,0 +1,35 @@
+# #서비스 이름이 ubuntu인 컨테이너 생성
+# version: '3.8'
+
+# services:
+#   ubuntu: 
+#     image: ubuntu:22.04
+#     entrypoint: /bin/bash
+#     command:
+#         - -c
+#         - "apt-get update && apt-get upgrade && apt-get install -y curl && sleep
+#         3600"
+#     restart: no
+#   nginx:
+#     image: nginx:latest
+#     expose:
+#       - 80
+#     restart: always
+
+# example.yaml 수정 publish
+# version: '3.8'
+
+services:
+  ubuntu: 
+    image: ubuntu:22.04
+    entrypoint: /bin/bash
+    command:
+        - -c
+        - "apt-get update && apt-get upgrade && apt-get install -y curl && sleep
+        3600"
+    restart: no
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    restart: always

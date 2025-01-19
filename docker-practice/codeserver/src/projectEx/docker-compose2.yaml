@@ -1,0 +1,14 @@
+name: 'network-across-project-2'
+
+services:
+  network-across-project-2:
+    image: nginx:latest
+    expose: 
+      - 80
+    networks:
+      across_project:
+        aliases:
+          - web
+networks:
+  across_project:
+    external: true

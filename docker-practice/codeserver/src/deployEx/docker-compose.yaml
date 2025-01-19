@@ -1,0 +1,10 @@
+# docker-compose.yaml
+name: deploy-replica
+services:
+  web:
+    container_name: "web"
+    image: nginx:latest
+    expose:
+      - 80
+    deploy:
+      replicas: 3
